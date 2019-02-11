@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "795479497266",
+    "firebase_url": "https://aalift-2c150.firebaseio.com",
+    "project_id": "aalift-2c150",
+    "storage_bucket": "aalift-2c150.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795479497266:android:607a30b37972099f",
+        "android_client_info": {
+          "package_name": "com.example.aalift"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795479497266-8dgerfbrdrd4p76drvceaemcjbt472ae.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aalift",
+            "certificate_hash": "7f6bfb417c0a89af59f342ce30b9a6b5c8061ca1"
+          }
+        },
+        {
+          "client_id": "795479497266-b72nu00msorudrbas8df8b8v6qa0iv7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCH4w4pDpfiYmWIWstzsMuPTNx5G8qKl8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795479497266-b72nu00msorudrbas8df8b8v6qa0iv7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

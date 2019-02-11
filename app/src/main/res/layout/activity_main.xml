@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
+    tools:context=".MainActivity">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="258dp"
+        android:layout_height="318dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/giphy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/facebook_btn"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="417dp"
+        android:layout_marginEnd="62dp"
+        android:background="@drawable/facebook_btn_background"
+        android:text="@string/login_with_facebook"
+        android:textColor="@color/com_facebook_button_background_color_focused"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="349dp"
+        android:layout_marginEnd="62dp"
+        android:background="@drawable/email_btn_background"
+        android:text="@string/login_with_email"
+        android:textColor="@color/com_facebook_button_background_color_focused"
+        android:textColorLink="@color/cardview_light_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="268dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="465dp"
+        android:layout_marginEnd="72dp"
+        android:text="@string/by_clicking_on_login_you_are_accepting_our_terms_and_conditions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

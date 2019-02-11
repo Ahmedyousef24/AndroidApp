@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">AA Lift</string>
+    <string name="facebook_app_id">293247671385628</string>
+    <string name="fb_login_protocol_scheme">fb293247671385628</string>
+    <string name="textview">TextView</string>
+    <string name="home">home</string>
+    <string name="hometext">home</string>
+    <string name="logoutbtn">LOGOUT</string>
+    <string name="login_with_facebook">LOGIN WITH FACEBOOK</string>
+    <string name="login_with_email">LOGIN WITH EMAIL</string>
+    <string name="by_clicking_on_login_you_are_accepting_our_terms_and_conditions">By Clicking on login, you are accepting our terms and conditions</string>
+    <string name="title_activity_new_acc">Create Account</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+</resources>
