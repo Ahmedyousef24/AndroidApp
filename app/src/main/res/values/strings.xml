@@ -6,13 +6,16 @@
     <string name="home">home</string>
     <string name="hometext">home</string>
     <string name="logoutbtn">LOGOUT</string>
-    <string name="login_with_facebook">LOGIN WITH FACEBOOK</string>
-    <string name="login_with_email">LOGIN WITH EMAIL</string>
+    <string name="name">Name</string>
+    <string name="continue_with_facebook">CONTINUE WITH FACEBOOK</string>
+    <string name="SIGN_UP">SIGN UP</string>
+    <string name= "ALREADY_HAVE_AN_ACCOUNT">Already have an account?Sign In</string>
+    <string name="SIGN_IN">Sign In</string>
     <string name="by_clicking_on_login_you_are_accepting_our_terms_and_conditions">By Clicking on login, you are accepting our terms and conditions</string>
     <string name="title_activity_new_acc">Create Account</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
@@ -22,4 +25,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="createbtn">Create</string>
+
 </resources>
