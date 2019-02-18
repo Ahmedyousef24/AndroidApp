@@ -70,6 +70,9 @@ public class NewAccActivity extends AppCompatActivity {
                     return;
                 }
 
+
+                //This is the neeeeew branch
+
                 //progressBar.setVisibility(View.VISIBLE);
 
                  // lägg user i firebase
