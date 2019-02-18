@@ -98,5 +98,5 @@ public class NewAccActivity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
     }*/
 
-
+ // testar
 }
