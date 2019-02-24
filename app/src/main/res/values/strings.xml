@@ -26,5 +26,9 @@
         completions."
     </string>
     <string name="createbtn">Create</string>
+    <string name="weight_kg">WEIGHT (KG)</string>
+    <string name="save">Save</string>
+    <string name="heading">Heading</string>
+    <string name="description">Description</string>
 
 </resources>

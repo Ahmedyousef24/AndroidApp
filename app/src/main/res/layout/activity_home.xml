@@ -4,22 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context="com.example.aalift.HomeActivity">
 
     <Button
         android:id="@+id/logout_btn"
-        android:layout_width="288dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="360dp"
-        android:layout_marginEnd="62dp"
-        android:layout_marginBottom="195dp"
+        android:layout_width="181dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/logout_background"
         android:text="@string/logoutbtn"
         android:textColor="@color/com_facebook_button_background_color_focused"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <fragment
+        android:id="@+id/fragmentHOME"
+        android:name="com.example.aalift.ProgressFragment"
+        android:layout_width="match_parent"
+        android:layout_height="516dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/logout_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </fragment>
 
 </android.support.constraint.ConstraintLayout>

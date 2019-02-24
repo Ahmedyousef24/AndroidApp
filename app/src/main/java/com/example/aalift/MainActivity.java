@@ -20,8 +20,6 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.Profile;
-import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mFacebookBtn,mEmailBtn;
     private TextView mSignInText;
     private  AccessToken token;
+    private String uName, mail , uid;
 
 
     @Override
@@ -134,7 +133,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
+                           uid = mAuth.getUid();
+                           UserData.CreateNewUser(uid,mail,uName);
+                            Log.d(TAG, uid);
                             mFacebookBtn.setEnabled(true);
                             updateUI();
                         } else {
@@ -154,7 +155,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCompleted(JSONObject object, GraphResponse response) {
                 try {
-                    Data.CreateNewUser( object.getString("id"),object.getString("email"),object.getString("name"));
+                    mail = object.getString("email");
+                    uName = object.getString("name");
                 }
                 catch (JSONException e){
                     e.printStackTrace();
@@ -162,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,name,email");
+        parameters.putString("fields", "name,email");
         request.setParameters(parameters);
         request.executeAsync();
     }
@@ -185,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(homeIntent);
         finish();
     }
-
 
 
 }
