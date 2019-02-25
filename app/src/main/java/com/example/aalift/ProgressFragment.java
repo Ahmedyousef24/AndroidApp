@@ -34,6 +34,8 @@ public class ProgressFragment extends Fragment {
     private final String TAG = "PARS";
     public WeightAdapter adapter;
     private List<Weight>listItem;
+    private List<Weight>item;
+    private RecyclerView.LayoutManager layoutManager;
 
 
 
@@ -49,7 +51,40 @@ public class ProgressFragment extends Fragment {
       recyclerView = v.findViewById(R.id.recyclerView);
 
 
-      saveButton.setOnClickListener(new View.OnClickListener() {
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+      WeightData.read(new WeightData.FirebaseCallback() {
+            @Override
+            public void OnCallBack(List<Weight> list) {
+                Log.d("shit",""+list.size());
+                //adapter = new WeightAdapter(list,getActivity());
+                //recyclerView.setAdapter(adapter);
+            }
+      });
+
+
+        Weight w1 = new Weight(1212 , new Date());
+        Weight w2 = new Weight(1212 , new Date());
+        Weight w3 = new Weight(1212 , new Date());
+        Weight w4 = new Weight(1212 , new Date());
+        Weight w5 = new Weight(1212 , new Date());
+        Weight w6 = new Weight(1212 , new Date());
+        Weight w17= new Weight(1212 , new Date());
+        Weight w8 = new Weight(1212 , new Date());
+        listItem = new ArrayList<>();
+        listItem.add(w1);
+        listItem.add(w2);
+        listItem.add(w3);
+        listItem.add(w4);listItem.add(w5);
+        listItem.add(w6);listItem.add(w17);
+        listItem.add(w8);
+
+        adapter = new WeightAdapter(listItem,getActivity());
+        recyclerView.setAdapter(adapter);
+
+
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
 
@@ -58,8 +93,9 @@ public class ProgressFragment extends Fragment {
 
           }
       });
-      ;
-     //   Log.d("shit",""+listItem.size());
+
+     //
+
 
       //read();
 
@@ -74,6 +110,8 @@ public class ProgressFragment extends Fragment {
         // TODO: Use the ViewModel
 
     }
+
+
 
 }
 

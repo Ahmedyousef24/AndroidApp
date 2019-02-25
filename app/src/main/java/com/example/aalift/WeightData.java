@@ -38,4 +38,33 @@ public class WeightData {
         String w = String.valueOf(weight.getWeight());
         Log.d(TAG,w);
     }
+
+    public static void read(final FirebaseCallback firebaseCallback){
+        db = FirebaseDatabase.getInstance().getReference().child("users").child(UserData.getUserId()).child("Weight");
+        listItem = new ArrayList<>();
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snap : dataSnapshot.getChildren() ){
+
+                    float w = snap.child("Weight").getValue(Float.class);
+                    Date date = snap.child("Date").getValue(Date.class);
+                    Weight item = new Weight(w,date);
+                    Log.d(TAG, "onDataChange: "+ snap.child("Weight").getValue(Float.class));
+                    listItem.add(item);
+                }
+                firebaseCallback.OnCallBack(listItem);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        db.addListenerForSingleValueEvent(eventListener);
+    }
+
+    public interface FirebaseCallback{
+        void OnCallBack(List<Weight>list);
+    }
 }
