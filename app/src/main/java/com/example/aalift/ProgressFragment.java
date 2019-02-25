@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -51,19 +52,19 @@ public class ProgressFragment extends Fragment {
       recyclerView = v.findViewById(R.id.recyclerView);
 
 
-        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new LinearLayoutManager(getActivity(), LinearLayout.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
       WeightData.read(new WeightData.FirebaseCallback() {
             @Override
             public void OnCallBack(List<Weight> list) {
                 Log.d("shit",""+list.size());
-                //adapter = new WeightAdapter(list,getActivity());
-                //recyclerView.setAdapter(adapter);
+                adapter = new WeightAdapter(list,getActivity());
+                recyclerView.setAdapter(adapter);
             }
       });
 
 
-        Weight w1 = new Weight(1212 , new Date());
+       /* Weight w1 = new Weight(1212 , new Date());
         Weight w2 = new Weight(1212 , new Date());
         Weight w3 = new Weight(1212 , new Date());
         Weight w4 = new Weight(1212 , new Date());
@@ -81,7 +82,7 @@ public class ProgressFragment extends Fragment {
 
         adapter = new WeightAdapter(listItem,getActivity());
         recyclerView.setAdapter(adapter);
-
+*/
 
 
         saveButton.setOnClickListener(new View.OnClickListener() {
