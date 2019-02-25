@@ -2,6 +2,7 @@ package com.example.aalift;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.util.LongSparseArray;
 
 import com.google.firebase.FirebaseException;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +24,7 @@ public class WeightData {
     private static DatabaseReference db;
     private static String TAG = "DATABASE";
     public static List<Weight> listItem;
+
 
     public static void AddWeight(Weight weight){
         db = FirebaseDatabase.getInstance().getReference().child("users").child(UserData.getUserId()).child("Weight").push();
@@ -62,6 +64,34 @@ public class WeightData {
             }
         };
         db.addListenerForSingleValueEvent(eventListener);
+    }
+
+    public static List<Weight> getNewList(){
+
+        db = FirebaseDatabase.getInstance().getReference().child("users").child(UserData.getUserId()).child("Weight");
+       listItem = new ArrayList<>();
+
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snap : dataSnapshot.getChildren()){
+
+                    float w = snap.child("Weight").getValue(Float.class);
+                    Date date = snap.child("Date").getValue(Date.class);
+                    Weight item = new Weight(w,date);
+
+                    listItem.add(item);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        db.addListenerForSingleValueEvent(eventListener);
+        return listItem;
     }
 
     public interface FirebaseCallback{

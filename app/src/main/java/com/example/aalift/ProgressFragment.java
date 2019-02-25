@@ -35,7 +35,7 @@ public class ProgressFragment extends Fragment {
     private final String TAG = "PARS";
     public WeightAdapter adapter;
     private List<Weight>listItem;
-    private List<Weight>item;
+
     private RecyclerView.LayoutManager layoutManager;
 
 
@@ -54,12 +54,14 @@ public class ProgressFragment extends Fragment {
 
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayout.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
-      WeightData.read(new WeightData.FirebaseCallback() {
+     WeightData.read(new WeightData.FirebaseCallback() {
             @Override
             public void OnCallBack(List<Weight> list) {
-                Log.d("shit",""+list.size());
+                Log.d("shit",""+list.get(0).getWeight());
+
                 adapter = new WeightAdapter(list,getActivity());
                 recyclerView.setAdapter(adapter);
+
             }
       });
 
@@ -78,12 +80,11 @@ public class ProgressFragment extends Fragment {
         listItem.add(w3);
         listItem.add(w4);listItem.add(w5);
         listItem.add(w6);listItem.add(w17);
-        listItem.add(w8);
+        listItem.add(w8);*/
 
-        adapter = new WeightAdapter(listItem,getActivity());
+       /* adapter = new WeightAdapter(listItem,getActivity());
         recyclerView.setAdapter(adapter);
 */
-
 
         saveButton.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -91,14 +92,17 @@ public class ProgressFragment extends Fragment {
 
               float weight = Float.valueOf(weightText.getText().toString());
               ProgressViewModel.NewWeight(weight);
+              // on click hämta ny list och update
+              // skapa en funktion som returner en lista och antal rader förändrade
+              // adapter.notifyIteminserste(antal objekt, list.size())
 
+
+              listItem = new ArrayList<>(WeightData.getNewList());
+              Log.d("newLIST", ""+WeightData.getNewList().get(0));
+                adapter.notifyItemChanged(WeightData.getNewList().size() - 1);
           }
       });
 
-     //
-
-
-      //read();
 
 
         return v;
