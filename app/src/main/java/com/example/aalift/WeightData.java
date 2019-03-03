@@ -12,8 +12,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +27,7 @@ public class WeightData {
     private static DatabaseReference db;
     private static String TAG = "DATABASE";
     public static List<Weight> listItem;
+    private static List<Weight>bigList;
 
 
     public static void AddWeight(Weight weight){
@@ -44,6 +48,7 @@ public class WeightData {
     public static void read(final FirebaseCallback firebaseCallback){
         db = FirebaseDatabase.getInstance().getReference().child("users").child(UserData.getUserId()).child("Weight");
         listItem = new ArrayList<>();
+        bigList = new ArrayList<>();
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -51,9 +56,13 @@ public class WeightData {
 
                     float w = snap.child("Weight").getValue(Float.class);
                     Date date = snap.child("Date").getValue(Date.class);
+
                     Weight item = new Weight(w,date);
-                    Log.d(TAG, "onDataChange: "+ snap.child("Weight").getValue(Float.class));
-                    listItem.add(item);
+                    bigList.add(item);
+                }
+                Collections.reverse(bigList);
+                for(int i=0 ; i<14; i++){
+                 listItem.add(bigList.get(i));
                 }
                 firebaseCallback.OnCallBack(listItem);
             }
@@ -66,32 +75,8 @@ public class WeightData {
         db.addListenerForSingleValueEvent(eventListener);
     }
 
-    public static List<Weight> getNewList(){
-
-        db = FirebaseDatabase.getInstance().getReference().child("users").child(UserData.getUserId()).child("Weight");
-       listItem = new ArrayList<>();
-
-        ValueEventListener eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snap : dataSnapshot.getChildren()){
-
-                    float w = snap.child("Weight").getValue(Float.class);
-                    Date date = snap.child("Date").getValue(Date.class);
-                    Weight item = new Weight(w,date);
-
-                    listItem.add(item);
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        };
-        db.addListenerForSingleValueEvent(eventListener);
-        return listItem;
+    public static float getLatestWeighIn(){
+        return  0;
     }
 
     public interface FirebaseCallback{

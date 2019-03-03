@@ -20,5 +20,4 @@ public class Weight {
     }
     public Date getDate() { return date; }
 
-
 }

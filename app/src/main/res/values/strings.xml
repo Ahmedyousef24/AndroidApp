@@ -9,7 +9,7 @@
     <string name="name">Name</string>
     <string name="continue_with_facebook">CONTINUE WITH FACEBOOK</string>
     <string name="SIGN_UP">SIGN UP</string>
-    <string name= "ALREADY_HAVE_AN_ACCOUNT">Already have an account?Sign In</string>
+    <string name="ALREADY_HAVE_AN_ACCOUNT">Already have an account?Sign In</string>
     <string name="SIGN_IN">Sign In</string>
     <string name="by_clicking_on_login_you_are_accepting_our_terms_and_conditions">By Clicking on login, you are accepting our terms and conditions</string>
     <string name="title_activity_new_acc">Create Account</string>
@@ -30,5 +30,10 @@
     <string name="save">Save</string>
     <string name="heading">Heading</string>
     <string name="description">Description</string>
+    <string name="set_weight">set weight (KG)</string>
+    <string name = "cancel">Cancel</string>
+    <string name="set">Set</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
