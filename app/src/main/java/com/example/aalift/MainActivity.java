@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private CallbackManager mCallbackManager;
     private FirebaseAuth mAuth;
     private static  final String TAG = "FACELOG";
-    private Button mFacebookBtn,mEmailBtn;
+    private Button mFacebookBtn,mEmailBtn, mHomeButton, btn, listbtn;
     private TextView mSignInText;
     private  AccessToken token;
 
@@ -57,13 +57,16 @@ public class MainActivity extends AppCompatActivity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-
         // Initialize Facebook Login button
         mCallbackManager = CallbackManager.Factory.create();
 
         mEmailBtn = (Button) findViewById(R.id.email_btn);
         mFacebookBtn = (Button) findViewById(R.id.facebook_btn);
         mSignInText = (TextView)findViewById(R.id.signInText);
+        mHomeButton = (Button) findViewById(R.id.home_btn);
+        listbtn = (Button)findViewById(R.id.List);
+
+
 
         mFacebookBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -96,12 +99,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mmm=  new Intent(MainActivity.this, FirstPage.class );
+                startActivity(mmm);
+
+            }
+        });
+
+        listbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent num=  new Intent(MainActivity.this, AddListItem.class );
+                startActivity(num);
+
+            }
+        });
+
+
         mEmailBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent newAccIntent=  new Intent(MainActivity.this, NewAccActivity.class );
                 startActivity(newAccIntent);
-
             }
         });
 
@@ -111,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,SignInAcivity.class));
             }
         };
+
         ss.setSpan(clickableSpan,24,31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         mSignInText.setText(ss);
         mSignInText.setMovementMethod(LinkMovementMethod.getInstance());
@@ -185,8 +207,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(homeIntent);
         finish();
     }
-
-
 
 }
 

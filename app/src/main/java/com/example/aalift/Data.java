@@ -26,7 +26,6 @@ public class Data {
                 throw e;
             }
         }
-
     }
 
     public static boolean UserExists(String userId){

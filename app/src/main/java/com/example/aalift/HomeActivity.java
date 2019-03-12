@@ -31,7 +31,6 @@ public class HomeActivity extends AppCompatActivity {
                 updateUI();
             }
         });
-        /// sfsdfsfsdfs
     }
     @Override
     public void onStart() {
