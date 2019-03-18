@@ -1,31 +1,32 @@
 package com.example.aalift;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.ViewHolder>{
 
-    private List<Weight> listItem;
+    public ArrayList<Weight> getListItem() {
+        return new ArrayList<>(listItem);
+    }
+
+    private ArrayList<Weight> listItem;
     private Context context;
 
 
      // constructer for the Adapter, list and context
-    public WeightAdapter(List<Weight> listItem, Context context) {
+    public WeightAdapter(ArrayList<Weight> listItem, Context context) {
         this.listItem = listItem;
         this.context = context;
 
@@ -46,7 +47,7 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.ViewHolder
         Weight weight = listItem.get(i);
         SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-        viewHolder.textHead.setText(Float.toString(weight.getWeight()));
+        viewHolder.textHead.setText(Float.toString(weight.getWeight()) + context.getString(R.string.kg));
         viewHolder.textDesc.setText(dtf.format( weight.getDate()));
     }
     // size of the list

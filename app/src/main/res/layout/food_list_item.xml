@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:background="?attr/backgroundColor">
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="?attr/backgroundColor"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:padding="@dimen/activity_horizontal_margin"
+            android:background="?attr/backgroundColor">
 
             <TextView
-                android:id="@+id/textViewHead"
-                android:background="?attr/backgroundColor"
+                android:id="@+id/textViewTitle"
                 android:textColor="?attr/textColor"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:text="@string/heading"
                 tools:layout_editor_absoluteX="8dp" />
 
             <TextView
-                android:id="@+id/textViewDes"
-                android:background="?attr/backgroundColor"
+                android:id="@+id/textViewValue"
                 android:textColor="?attr/textColor"
-                android:layout_width="match_parent"
+
+                android:background="?attr/backgroundColor"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/textViewTitle"
+                android:layout_alignParentRight="true"
                 android:text="@string/description"
                 tools:layout_editor_absoluteX="8dp" />
 
-        </LinearLayout>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
 </LinearLayout>

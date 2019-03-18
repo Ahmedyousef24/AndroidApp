@@ -4,14 +4,10 @@ package com.example.aalift;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.net.LinkAddress;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.DialogFragment;
+
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -22,21 +18,12 @@ public class WeightPicker extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        /* Todo
-        1. get default value
-        2. return the view
-        3. on WeightSet method
-        4. save the weight.
-        https://stackoverflow.com/questions/11800589/number-picker-dialog
-        http://www.zoftino.com/android-numberpicker-dialog-example
-         */
+
 
         LinearLayout linearLayout = new LinearLayout(getActivity());
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
         TextView textView = new TextView(getActivity());
 
         textView.setText(",");
@@ -73,7 +60,6 @@ public class WeightPicker extends DialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // get the value and pass it to a function maybe
                         ProgressFragment.NewWeight(numberPicker.getValue(),numberPicker2.getValue());
-                        ProgressFragment.AnimateChart();
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

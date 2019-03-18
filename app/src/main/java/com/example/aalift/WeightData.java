@@ -1,10 +1,8 @@
 package com.example.aalift;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
-import android.util.LongSparseArray;
 
-import com.google.firebase.FirebaseException;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
@@ -12,10 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.ParseException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -61,10 +56,8 @@ public class WeightData {
                     bigList.add(item);
                 }
                 Collections.reverse(bigList);
-                for(int i=0 ; i<14; i++){
-                 listItem.add(bigList.get(i));
-                }
-                firebaseCallback.OnCallBack(listItem);
+
+                firebaseCallback.OnCallBack(bigList);
             }
 
             @Override
