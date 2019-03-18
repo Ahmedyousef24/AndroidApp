@@ -108,16 +108,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent num=  new Intent(MainActivity.this, AddListItem.class );
-                startActivity(num);
-
-            }
-        });
-
-
         mEmailBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

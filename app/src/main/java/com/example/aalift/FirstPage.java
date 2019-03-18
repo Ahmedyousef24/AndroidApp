@@ -1,73 +1,81 @@
 package com.example.aalift;
 
-import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FirstPage extends AppCompatActivity {
 
-    EditText et;
+
     private Button btn;
-    ListView lv;
-    ArrayList<String> arrayList;
+    RecyclerView recycleBreakfast, recycleLunch, recycleDinner, recycleSnack;
+    ArrayList<Note> breakfastList, lunchList, dinnerList, snackList;
+    private HomeAdapter breakfastAdapter, lunchAdpater, dinnerAdapter, snackAdapter;
+    private Button breakButton;
 
-    ArrayAdapter<String> adapter;
-
-    private List<Note> listItem;
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_page);
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager((this)));
-        recyclerView.setHasFixedSize(true);
+        recycleBreakfast = (RecyclerView) findViewById(R.id.recycleBreakfast);
+        recycleLunch = (RecyclerView) findViewById(R.id.recycleLunch);
+        recycleDinner = (RecyclerView) findViewById(R.id.recycleDinner);
+        recycleSnack = (RecyclerView) findViewById(R.id.recycleSnack);
+        breakButton = findViewById(R.id.breakfastBtn);
 
-        Note n1 = new Note("BREAKFAST");
-        Note n2 = new Note("LUNCH");
-        Note n3 = new Note("DINNER");
-        Note n4 = new Note("SNACK");
 
-        List listItem = new ArrayList<>();
-        listItem.add(n1);
-        listItem.add(n2);
-        listItem.add(n3);
-        listItem.add(n4);
+        breakfastList = new ArrayList<>();
+        lunchList = new ArrayList<>();
+        dinnerList = new ArrayList<>();
+        snackList = new ArrayList<>();
 
-        // istället för this när man använder fragment så skriver man getContext()
-        NoteAdapter adapter = new NoteAdapter(this, listItem);
-        recyclerView.setAdapter(adapter);
+        breakfastList.add(new Note("this is breakfast","hej"));
+        lunchList.add(new Note("this is Lunch","hej"));
+        dinnerList.add(new Note("this is dinner","hej"));
+        snackList.add(new Note("this is snack","hej"));
 
-      //  onBtnClick2();
+        breakfastAdapter = new HomeAdapter(this, breakfastList);
+        lunchAdpater = new HomeAdapter(this, lunchList);
+        dinnerAdapter = new HomeAdapter(this, dinnerList);
+        snackAdapter = new HomeAdapter(this, snackList);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager3 = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+
+        recycleSnack.setLayoutManager(linearLayoutManager);
+        recycleDinner.setLayoutManager(linearLayoutManager1);
+        recycleLunch.setLayoutManager(linearLayoutManager2);
+        recycleBreakfast.setLayoutManager(linearLayoutManager3);
+
+        recycleSnack.setAdapter(snackAdapter);
+        recycleDinner.setAdapter(dinnerAdapter);
+        recycleLunch.setAdapter(lunchAdpater);
+        recycleBreakfast.setAdapter(breakfastAdapter);
+
+        breakButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                breakfastList.add(new Note("this is break ","hej"));
+                breakfastAdapter.notifyDataSetChanged();
+
+            }
+        });
     }
-//
-//    public void onBtnClick2() {
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String result = et.getText().toString();
-//                arrayList.add(result);
-//                adapter.notifyDataSetChanged();
-//            }
-//        });
-//    }
 }
+
+
 
 
 
