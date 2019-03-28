@@ -25,9 +25,6 @@ public class ScanData extends AsyncTask<Void, Void, Void> {
     private static CallBack listener;
     private Boolean flag = false;
 
-    public ScanData(){
-        this.listener = null;
-    }
 
 
     public static ArrayList<Nutrition> getFoodList() {
@@ -41,7 +38,7 @@ public class ScanData extends AsyncTask<Void, Void, Void> {
 
 
 
-    public static void setCustomListener(CallBack callBack){
+    public void setCustomListener(CallBack callBack){
         listener = callBack;
     }
 
@@ -113,12 +110,10 @@ public class ScanData extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        flag = true;
-        if(listener !=null){
+         flag = true;
             Log.d("foodlist","ready ");
             listener.onDataLoaded(foodList);
             listener.onDataReady(flag);
-        }
 
     }
 

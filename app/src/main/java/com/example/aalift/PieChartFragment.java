@@ -43,7 +43,7 @@ public class PieChartFragment extends Fragment {
 
 
         // get these values from database
-        entries.add(new PieEntry(20f, "fat"));
+        entries.add(new PieEntry(20f, "Fat"));
         entries.add(new PieEntry(35f, "Protein"));
         entries.add(new PieEntry(45f, "Carbohydrates"));
         chart.getLegend().setTextColor(Color.WHITE);
@@ -63,12 +63,12 @@ public class PieChartFragment extends Fragment {
         chart.setDrawSliceText(false);
         chart.setBackgroundColor(Color.rgb(48, 48, 48));
         chart.setHoleColor(Color.rgb(48, 48, 48));
-        Description description = new Description();
-        description.setText("Calorie");
+       /* Description description = new Description();
+        description.setText("Calorie distribution");
         description.setTextSize(14f);
         description.setTextColor(Color.WHITE);
-
-        chart.setDescription(description);
+        chart.setDescription(description);*/
+       chart.getDescription().setEnabled(false);
         chart.invalidate();
 
     }

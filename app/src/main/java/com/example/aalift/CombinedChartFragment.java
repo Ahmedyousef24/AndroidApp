@@ -84,7 +84,6 @@ public class CombinedChartFragment extends Fragment {
     }
 
 
-    // GetLIST FUNCTION
     private void GetList() {
         WeightData.read(new WeightData.FirebaseCallback() {
             @Override
@@ -117,9 +116,6 @@ public class CombinedChartFragment extends Fragment {
     }
 
     private void AddDataToLineChart() {
-
-
-        // move this to another function?
 
         final String[] date = DateToString();
 
@@ -158,8 +154,6 @@ public class CombinedChartFragment extends Fragment {
     }
 
     private void AddDataToBarChart() {
-
-        Log.d("listzie", "" + listItem.size());
 
 
         BarDataSet barDataSet = new BarDataSet(barEntries, "kcal");
@@ -219,13 +213,6 @@ public class CombinedChartFragment extends Fragment {
         readyFlag = true;
     }
 
-    private void UpdateChart() {
-        /*TODO
-         * Add the items to the dataset
-         * notifychart
-         * update it
-         * */
-    }
 
     public static void AnimateChart() {
         chart.animateXY(1000, 2000, Easing.EaseInBounce);

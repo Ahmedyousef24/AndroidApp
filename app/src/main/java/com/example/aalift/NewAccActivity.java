@@ -78,7 +78,7 @@ public class NewAccActivity extends AppCompatActivity {
                         else{
                             final String userId = auth.getCurrentUser().getUid();
                             UserData.CreateNewUser(userId,email,name);
-                            startActivity(new Intent(NewAccActivity.this,HomeActivity.class));
+                            startActivity(new Intent(NewAccActivity.this,UserGoalsActivity.class));
                             finish();
                         }
                     }

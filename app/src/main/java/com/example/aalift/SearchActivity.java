@@ -1,16 +1,15 @@
 package com.example.aalift;
 
 
+import android.app.Activity;
 import android.content.Intent;
-import android.content.ReceiverCallNotAllowedException;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -28,18 +27,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class SearchFragment extends Fragment {
+public class SearchActivity extends Activity {
 
-    public static Button scanBtn;
+    public  ImageButton scanBtn;
     public static TextView textView;
     private ScanCodeActivity scanCodeActivity;
     private HomeActivity homeActivity;
@@ -49,39 +46,48 @@ public class SearchFragment extends Fragment {
     private NutritionAdapter adapter;
     private RecyclerView recyclerView;
     private RequestQueue mQueue;
-    private String tag = "search";
+    private String tag;
     private ArrayList<Nutrition>detailList;
-
+    private Handler handler = new Handler();
+    private int progressStatus = 0;
 
 
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_search, container, false);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+
 
         homeActivity = new HomeActivity();
-        scanBtn = v.findViewById(R.id.scanBtn);
-        recyclerView = v.findViewById(R.id.searchList);
-        searchView = v.findViewById(R.id.searchBar);
+        scanBtn = findViewById(R.id.scanBtn);
+        recyclerView = findViewById(R.id.searchList);
+        searchView = findViewById(R.id.searchBar);
         list = new ArrayList<>();
         itemList = new ArrayList<>();
-        LinearLayoutManager linearLayout = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
-        adapter = new NutritionAdapter(getContext(),list,tag);
+        LinearLayoutManager linearLayout = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        tag = getIntent().getStringExtra("meal");
+
+
+
+        adapter = new NutritionAdapter(this, list, tag);
 
         detailList = new ArrayList<>();
 
-        mQueue = Volley.newRequestQueue(getContext());
+        mQueue = Volley.newRequestQueue(this);
         scanBtn.setOnClickListener(new View.OnClickListener() {
 
 
             // @Override
             public void onClick(View v) {
-                Intent homeintent = new Intent(getContext(), ScanCodeActivity.class);
+                Intent intent = new Intent(SearchActivity.this, ScanCodeActivity.class);
+                intent.putExtra("meal",tag);
                 Log.d("foo", "creating..");
-                startActivity(homeintent);
+                startActivity(intent);
+                finish();
+
             }
         });
 
@@ -102,20 +108,20 @@ public class SearchFragment extends Fragment {
                 return false;
             }
         });
-
         adapter.itemClicked(new NutritionAdapter.clickListener() {
             @Override
             public void onClicked(int position) {
-                Log.d("clickedon","pos"
-                +position);
+                Log.d("clickedon", "pos"
+                        + position);
                 viewItem(position);
 
             }
         });
-       recyclerView.setLayoutManager(linearLayout);
+        recyclerView.setLayoutManager(linearLayout);
         recyclerView.setAdapter(adapter);
-        return v;
+
     }
+
 
     private void viewItem(int position) {
 
@@ -139,10 +145,12 @@ public class SearchFragment extends Fragment {
                     e.printStackTrace();
                 }
                 /*  Todo startActivity*/
-                Intent intent = new Intent(getContext(), NutritionActivity.class);
+                Intent intent = new Intent(SearchActivity.this, NutritionActivity.class);
                 Log.d("foo", "creating.."+detailList.size());
                 intent.putExtra("nutritionList", detailList);
+                intent.putExtra("meal",tag);
                 startActivity(intent);
+                finish();
 
 
             }

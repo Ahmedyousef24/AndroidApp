@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -39,6 +40,25 @@ public class WeightData {
         String w = String.valueOf(weight.getWeight());
         Log.d(TAG,w);
     }
+    public static void getLatestWeight(final LatestWeight listener){
+        db = FirebaseDatabase.getInstance().getReference().child("users").child(UserData.getUserId());
+        Query query = db.child("Weight").orderByKey().limitToLast(1);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                float weight = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                     weight = snapshot.child("Weight").getValue(Float.class);
+                }
+                listener.onLatestWeight(weight);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     public static void read(final FirebaseCallback firebaseCallback){
         db = FirebaseDatabase.getInstance().getReference().child("users").child(UserData.getUserId()).child("Weight");
@@ -68,11 +88,11 @@ public class WeightData {
         db.addListenerForSingleValueEvent(eventListener);
     }
 
-    public static float getLatestWeighIn(){
-        return  0;
-    }
 
     public interface FirebaseCallback{
         void OnCallBack(List<Weight>list);
+    }
+    public interface LatestWeight{
+        void onLatestWeight(float weight);
     }
 }

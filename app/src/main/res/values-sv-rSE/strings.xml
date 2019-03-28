@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AA Lift</string>
+    <string name="weight_kg">Vikt (KG)</string>
+    <string name="snack">mellan mål</string>
+    <string name="SIGN_UP">Skapa konto</string>
+    <string name="SIGN_IN">Logga in</string>
+    <string name="set_weight">sätt vikt</string>
+    <string name="set">"sätt "</string>
+    <string name="serving_value">serveringsvärde</string>
+    <string name="serving_size">serveringsstorlek</string>
+    <string name="search">sök</string>
+    <string name="save">spara</string>
+    <string name="progress">framsteg</string>
+    <string name="profil">profil</string>
+    <string name="password">lösenord</string>
+    <string name="night_mode">nattläge</string>
+    <string name="Next">nästa</string>
+    <string name="name">namn</string>
+    <string name="lunch">lunch</string>
+    <string name="logoutbtn">loggautknp</string>
+    <string name="kg">kg</string>
+    <string name="kcal">kcal</string>
+    <string name="home">hem</string>
+    <string name="history">" historia"</string>
+    <string name="heading">rubrik</string>
+    <string name="gram">gram</string>
+    <string name="error_invalid_password">ogiltig lösenord</string>
+    <string name="error_invalid_email">ogiltig email</string>
+    <string name="error_incorrect_password">felaktig lösenord</string>
+    <string name="error_field_required">"Fyll i fält "</string>
+    <string name="email">email</string>
+    <string name="dinner">middag</string>
+    <string name="description">beskrivning</string>
+    <string name="data_not_found">data ej hittades</string>
+    <string name="continue_with_facebook">Fortsätt med facebook</string>
+    <string name="cancel">avbryt</string>
+    <string name="breakfast">Frukost</string>
+    <string name="ALREADY_HAVE_AN_ACCOUNT">" Har du redan ett konto"</string>
+    <string name="add">lägg till</string>
+</resources>

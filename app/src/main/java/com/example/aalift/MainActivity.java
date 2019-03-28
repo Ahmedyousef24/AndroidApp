@@ -33,6 +33,7 @@ import com.google.firebase.auth.FirebaseUser;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mSignInText;
     private  AccessToken token;
     private String uName, mail , uid;
+    private UserData data;
 
 
     @Override
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-
+        data = new UserData();
         // Initialize Facebook Login button
         mCallbackManager = CallbackManager.Factory.create();
 
@@ -134,7 +136,8 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                            uid = mAuth.getUid();
-                           UserData.CreateNewUser(uid,mail,uName);
+
+                            UserData.CreateNewUser(uid,mail,uName);
                             Log.d(TAG, uid);
                             mFacebookBtn.setEnabled(true);
                             updateUI();
@@ -144,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             mFacebookBtn.setEnabled(true);
-                            //updateUI(null);
                         }
                     }
                 });
@@ -172,8 +174,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        // kollar med Firebase om user är inloggad
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null) {
             updateUI();
@@ -182,7 +182,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI() {
         Toast.makeText(MainActivity.this,"logged in",Toast.LENGTH_LONG).show();
-        // start intent if logged in
         Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
         startActivity(homeIntent);
         finish();

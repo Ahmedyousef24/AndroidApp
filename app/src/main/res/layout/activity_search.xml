@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchFragment"
+    tools:context=".SearchActivity"
     android:background="?attr/backgroundColor">
 
 
-    <Button
+    <ImageButton
         android:id="@+id/scanBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:text="@string/button" />
+        android:src="@drawable/ic_barcode"/>
 
     <SearchView
         android:id="@+id/searchBar"
@@ -23,24 +23,18 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="3dp"
         android:layout_toStartOf="@+id/scanBtn"
+        android:background="@drawable/rounded_corners"
+        android:queryHint="@string/search"
         style="@style/Widget.AppCompat.SearchView"/>
 
-    <TextView
-        android:id="@+id/textViewH"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/searchBar"
-        android:layout_marginStart="10dp"
-        android:text="@string/history"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:background="?attr/backgroundColor"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/searchList"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/textViewH">
+        android:layout_below="@+id/searchBar">
     </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

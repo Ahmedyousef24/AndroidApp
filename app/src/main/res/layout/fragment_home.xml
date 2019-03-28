@@ -1,15 +1,332 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment"
     android:background="?attr/backgroundColor">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="?attr/backgroundColor">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/lightGrey">
+
+            <TextView
+                android:id="@+id/textGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentStart="true"
+                android:background="@color/lightGrey"
+                android:text="0"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/textResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textGoal"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/lightGrey"
+                android:text="0"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/goal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textGoal"
+                android:background="@color/lightGrey"
+                android:text="Goal"
+                android:textColor="@color/green"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/textTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textResult"
+                android:layout_toRightOf="@+id/goal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/lightGrey"
+                android:text="Food"
+                android:textColor="@color/green"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/backgroundColor">
+
+                    <TextView
+                        android:id="@+id/breakfastText"
+                        android:layout_width="match_parent"
+                        android:layout_height="311dp"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:text="@string/breakfast"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <View
+                        android:layout_width="352dp"
+                        android:layout_height="2dp"
+                        android:layout_below="@id/breakfastText"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="-258dp"
+                        android:layout_marginEnd="44dp"
+                        android:background="@color/white" />
+
+
+                    <Button
+                        android:id="@+id/breakfastBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/recycleBreakfast"
+                        android:layout_centerInParent="true"
+                        android:text="@string/add"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycleBreakfast"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/breakfastText"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="60dp"
+                        android:stackFromBottom="true"
+                        android:transcriptMode="normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@color/white"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/backgroundColor">
+
+                    <TextView
+                        android:id="@+id/lunchText"
+                        android:layout_width="match_parent"
+                        android:layout_height="311dp"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="12dp"
+                        android:text="@string/lunch"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <View
+                        android:layout_width="352dp"
+                        android:layout_height="2dp"
+                        android:layout_below="@id/lunchText"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="-258dp"
+                        android:layout_marginEnd="44dp"
+                        android:background="@android:color/darker_gray" />
+
+
+                    <Button
+                        android:id="@+id/lunchBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/recycleLunch"
+                        android:text="@string/add" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycleLunch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lunchText"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="60dp"
+                        android:stackFromBottom="true"
+                        android:transcriptMode="normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@color/white"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/backgroundColor">
+
+                    <TextView
+                        android:id="@+id/dinnerText"
+                        android:layout_width="match_parent"
+                        android:layout_height="311dp"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="12dp"
+                        android:text="@string/dinner"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <View
+                        android:layout_width="352dp"
+                        android:layout_height="2dp"
+                        android:layout_below="@id/dinnerText"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="-258dp"
+                        android:layout_marginEnd="44dp"
+                        android:background="@android:color/darker_gray" />
+
+
+                    <Button
+                        android:id="@+id/dinnerBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/recycleDinner"
+                        android:layout_centerInParent="true"
+                        android:text="@string/add"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycleDinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dinnerText"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="60dp"
+                        android:stackFromBottom="true"
+                        android:transcriptMode="normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@color/white"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/backgroundColor">
+
+                    <TextView
+                        android:id="@+id/snackText"
+                        android:layout_width="match_parent"
+                        android:layout_height="311dp"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="12dp"
+                        android:text="Snack"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <View
+                        android:layout_width="352dp"
+                        android:layout_height="2dp"
+                        android:layout_below="@id/snackText"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="-258dp"
+                        android:layout_marginEnd="44dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <Button
+                        android:id="@+id/snackBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/recycleSnack"
+                        android:layout_centerInParent="true"
+                        android:text="@string/add" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycleSnack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/snackText"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="60dp"
+                        android:stackFromBottom="true"
+                        android:transcriptMode="normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

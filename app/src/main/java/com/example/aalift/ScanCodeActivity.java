@@ -23,22 +23,21 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
     public static final int PERMISSION_REQUEST_CAMERA = 1;
     private  String TAG = "SCAN";
     private ScanData process;
-    private  Intent intent;
     private String url = "https://world.openfoodfacts.org/api/v0/product/";
+    private String tag;
 private ScanData data;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
          process = new ScanData();
-        intent = new Intent(ScanCodeActivity.this,NutritionActivity.class);
         scannerView = new ZXingScannerView(this);
+        tag = getIntent().getStringExtra("meal");
         setContentView(scannerView);
         // Request permission. This does it asynchronously so we have to wait for onRequestPermissionResult before trying to open the camera.
         if (!haveCameraPermission()){
             requestPermissions(new String[]{Manifest.permission.CAMERA}, PERMISSION_REQUEST_CAMERA);
         }
-        viewNutrition();
     }
 
     private boolean haveCameraPermission()
@@ -83,41 +82,22 @@ private ScanData data;
 
         url = url + result.getText();
         Log.d(TAG, "handleResult: "+url);
-
+        Intent intent = new Intent(ScanCodeActivity.this,LoadingActivity.class);
+        intent.putExtra("meal",tag);
+        startActivity(intent);
         process.setUrl(url);
         process.execute();
+
         onBackPressed();
+
     }
-
-    public void viewNutrition() {
-        ScanData.setCustomListener(new ScanData.CallBack(){
-            @Override
-            public void onDataLoaded(ArrayList<Nutrition> list) {
-                intent.putExtra("nutritionList",list);
-            }
-
-            @Override
-            public void onDataReady(Boolean flag) {
-                if(flag){
-                    startActivity(intent);
-                    finish();
-                }
-                else{
-                    finish();
-                }
-            }
-        });
-    }
-
 
     @Override
     public void onPause() {
         super.onPause();
         scannerView.stopCamera();
 
-
     }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -125,7 +105,5 @@ private ScanData data;
         scannerView.startCamera();
     }
 
-    private void Fetch(String url){
-    }
 
 }

@@ -61,13 +61,8 @@ public class WeightPicker extends DialogFragment {
                         // get the value and pass it to a function maybe
                         ProgressFragment.NewWeight(numberPicker.getValue(),numberPicker2.getValue());
                     }
-                })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
                 });
+
         builder.setView(linearLayout);
         return builder.create();
 

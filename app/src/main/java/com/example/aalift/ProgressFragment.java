@@ -70,8 +70,9 @@ public class ProgressFragment extends Fragment {
      else{
          listItem = new ArrayList<>();
          GetList();
+         animate();
      }
-     animateLoading();
+    // animateLoading();
         progressBar = v.findViewById(R.id.progressBar);
         recyclerView = v.findViewById(R.id.recyclerView);
         tabLayout = v.findViewById(R.id.tablayout);
@@ -124,7 +125,7 @@ public class ProgressFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         return v;
     }
-    private void animateLoading(){
+  /*  private void animateLoading(){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -141,7 +142,7 @@ public class ProgressFragment extends Fragment {
                 }
             }
         }).start();
-    }
+    }*/
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
@@ -187,6 +188,9 @@ public class ProgressFragment extends Fragment {
         return weight;
     }
 
+    private void animate() {
+
+    }
     // GetLIST FUNCTION
     private void GetList() {
 
@@ -197,6 +201,7 @@ public class ProgressFragment extends Fragment {
                 Log.d("listsize",""+listItem.size());
                 adapter.notifyItemChanged(0);
                 flag = true;
+                Log.d("flag",""+flag);
             }
         });
     }

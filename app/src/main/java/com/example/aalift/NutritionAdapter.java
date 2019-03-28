@@ -33,7 +33,8 @@ public class NutritionAdapter extends RecyclerView.Adapter<NutritionAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Nutrition food = dataList.get(position);
+     if(position>=0) {
+         Nutrition food = dataList.get(position);
 
         holder.title.setText(food.getName());
 
@@ -46,7 +47,9 @@ public class NutritionAdapter extends RecyclerView.Adapter<NutritionAdapter.View
         } else {
             holder.value.setText(String.format("%.2f", food.getValue()) + context.getString(R.string.kcal));
         }
+     }
     }
+
 
     public void itemClicked(clickListener clickListener) {
         listener = clickListener;

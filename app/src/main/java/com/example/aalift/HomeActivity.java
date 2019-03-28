@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -23,11 +22,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private Button mLogoutBtn;
     private FirebaseAuth mAuth;
-    private FrameLayout frame;
+   public static FrameLayout frame;
     private BottomNavigationView navView;
 
     private HomeFragment homeFragment;
-    private SearchFragment searchFragment;
+    private SearchActivity searchActivity;
     private ProgressFragment progressFragment;
     private ProfileFragment profileFragment;
     private ScanCodeActivity scanCodeActivity;
@@ -50,34 +49,29 @@ public class HomeActivity extends AppCompatActivity {
 
 
         homeFragment = new HomeFragment();
-        searchFragment = new SearchFragment();
+        searchActivity = new SearchActivity();
         progressFragment = new ProgressFragment();
         profileFragment = new ProfileFragment();
-
 
 
         mAuth = FirebaseAuth.getInstance();
 
         frame = (FrameLayout) findViewById(R.id.frame);
-        navView = (BottomNavigationView) findViewById(R.id.navView);
-
-
+        navView = (BottomNavigationView) findViewById(R.id.bottomNavView);
+        navView.setSelectedItemId(R.id.home);
+        SetFragment(homeFragment, progressFragment, profileFragment, homeTag);
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.home:
-                        SetFragment(homeFragment, searchFragment, progressFragment, profileFragment, homeTag);
-                        return true;
-                    case R.id.search:
-                        SetFragment(searchFragment, homeFragment, progressFragment, profileFragment, searchTag);
+                        SetFragment(homeFragment, progressFragment, profileFragment, homeTag);
                         return true;
                     case R.id.progress:
-
-                        SetFragment(progressFragment, profileFragment, homeFragment, searchFragment, progressTag);
+                        SetFragment(progressFragment, profileFragment, homeFragment, progressTag);
                         return true;
                     case R.id.profile:
-                        SetFragment(profileFragment, searchFragment, progressFragment, homeFragment ,profileTag);
+                        SetFragment(profileFragment,  progressFragment, homeFragment ,profileTag);
                         return true;
                     default:
                         return false;
@@ -85,11 +79,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void StartScanActivity(){
-        Intent homeintent = new Intent(HomeActivity.this, ScanCodeActivity.class);
-        startActivity(homeintent);
     }
 
     @Override
@@ -118,7 +107,7 @@ public class HomeActivity extends AppCompatActivity {
         finish();
     }
 
-    private void SetFragment(Fragment fragmentToShow, Fragment fragmentToHide1, Fragment fragmentToHide2, Fragment fragmentToHide3, String tag) {
+    private void SetFragment(Fragment fragmentToShow, Fragment fragmentToHide1, Fragment fragmentToHide2, String tag) {
 
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -128,7 +117,7 @@ public class HomeActivity extends AppCompatActivity {
             fragmentTransaction.add(R.id.frame, fragmentToShow, tag);
             fragmentTransaction.hide(fragmentToHide1);
             fragmentTransaction.hide(fragmentToHide2);
-            fragmentTransaction.hide(fragmentToHide3);
+
 
             fragmentTransaction.commit();
             return;
@@ -137,7 +126,6 @@ public class HomeActivity extends AppCompatActivity {
             fragmentTransaction.show(fragmentToShow);
             fragmentTransaction.hide(fragmentToHide1);
             fragmentTransaction.hide(fragmentToHide2);
-            fragmentTransaction.hide(fragmentToHide3);
             fragmentTransaction.commit();
         }
 
